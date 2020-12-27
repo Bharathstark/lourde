@@ -45,7 +45,7 @@ func handleGETAllNotifications(w http.ResponseWriter, r *http.Request) (response
 	if found {
 		return ConstructResponse(&data, "success")
 	}
-	_, error := database.GetAllEntityFilterOrder(&notication, &notifications, "date desc,id")
+	_, error := database.GetAllEntityFilterOrder(&notication, &notifications, "notification.date desc,notification.id")
 	if *error != nil {
 		return ConstructResponse(error, "failed")
 	}

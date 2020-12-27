@@ -35,7 +35,7 @@ func Initialize() {
 		Path:     "/",
 		Domain:   "lourdemathaschool.edu.in",
 		MaxAge:   60 * 30,
-		Secure:   true,
+		Secure:   false,
 		HttpOnly: true,
 		SameSite: http.SameSiteStrictMode,
 	}

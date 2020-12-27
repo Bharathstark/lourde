@@ -62,7 +62,7 @@ func handleGETAllEvents(w http.ResponseWriter, r *http.Request) *Response {
 	if found {
 		return ConstructResponse(&data, "success")
 	}
-	_, error := database.GetAllEntityFilterOrder(&event, &events, "date desc,id")
+	_, error := database.GetAllEntityFilterOrder(&event, &events, "events.date desc,events.id")
 	if *error != nil {
 		return ConstructResponse(error, "failed")
 	}

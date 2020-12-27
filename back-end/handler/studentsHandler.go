@@ -61,7 +61,7 @@ func handleGETAllStudents(w http.ResponseWriter, r *http.Request) (response *Res
 	if found {
 		return ConstructResponse(&data, "success")
 	}
-	_, error := database.GetAllEntityFilterOrder(&event, &events, "rank asc,id")
+	_, error := database.GetAllEntityFilterOrder(&event, &events, "students.rank asc,students.id")
 	for i := range events {
 		var marks []database.Marks
 		database.GetAllChildEntity(&events[i], &marks, "Marks")
