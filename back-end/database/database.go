@@ -19,7 +19,7 @@ func Initialize() error {
 	logger.Log.Printf("Intializing DB")
 	var err error
 
-	dsn := "root:Lmcmhsc@123@tcp(localhost:3306)/lourde?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:lmcmysql123@tcp(localhost:3306)/lourde?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
