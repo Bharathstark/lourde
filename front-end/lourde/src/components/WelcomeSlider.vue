@@ -413,7 +413,7 @@
             <iframe
               height="75%"
               width="100%"
-              :src="video.url"
+              :src="'https://www.youtube-nocookie.com/embed/' + video.url"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
@@ -422,7 +422,7 @@
               {{ video.name }}
             </v-card-title>
             <v-card-title class="ml-2 pa-1">
-              <v-chip small outlined color="deep-purple accent-4">{{
+              <v-chip v-show="!($vuetify.breakpoint.xs || $vuetify.breakpoint.sm)" small outlined color="deep-purple accent-4">{{
                 new Date(video.date).toISOString().substring(0, 10)
               }}</v-chip>
             </v-card-title>

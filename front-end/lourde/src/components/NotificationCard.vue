@@ -2,7 +2,7 @@
   <v-dialog
     v-model="dialog"
     @keydown.esc="cancel"
-    max-width="500"
+    :max-width="($vuetify.breakpoint.xs || $vuetify.breakpoint.sm)?300:500"
     :style="{ zIndex: options.zIndex }"
   >
     <v-card>

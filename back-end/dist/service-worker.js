@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.0e5fb5afa73b77291390cdea96cba5d7.js"
+  "/precache-manifest.09cb596723d34b98baec7028b0be92d0.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "lourde"});
