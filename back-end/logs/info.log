@@ -1,0 +1,3 @@
+2020/12/27 10:42:09 logger.go:28: LogFile : logs\info.log
+2020/12/27 10:42:09 database.go:19: Intializing DB
+2020/12/27 10:42:11 database.go:26: Error Intializing DB
