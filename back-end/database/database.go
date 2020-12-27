@@ -20,9 +20,8 @@ func Initialize() error {
 	var err error
 
 	dsn := "root:lmcmysql123@tcp(localhost:3306)/lourde?charset=utf8mb4&parseTime=True&loc=Local"
-	logger.Log.Print(mysql.Open(dsn))
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
-	logger.Log.Print(db)
+
 	logger.Log.Print(err)
 
 	if err != nil {
@@ -56,7 +55,9 @@ var p [7]interface{}
 
 func initializeTables() {
 
-	migrate := db.Migrator()
+	logger.Log.Print(db)
+
+	migrate := db.Debug().Migrator()
 
 	logger.Log.Printf("Loading Tables")
 
