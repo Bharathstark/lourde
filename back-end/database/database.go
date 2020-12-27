@@ -15,20 +15,14 @@ var (
 
 //Initialize used to Initialize the DB Pool
 func Initialize() error {
-
 	logger.Log.Printf("Intializing DB")
 	var err error
-
 	dsn := "root:lmcmysql123@tcp(localhost:3306)/lourde?charset=utf8mb4&parseTime=True&loc=Local"
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
-	logger.Log.Print(db)
-	logger.Log.Print(err)
-
+	db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		logger.Log.Printf("Error Intializing DB")
 		return err
 	}
-
 	sqlDB, err := db.DB()
 
 	if err != nil {
