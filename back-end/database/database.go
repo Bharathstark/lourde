@@ -20,6 +20,7 @@ func Initialize() error {
 	var err error
 
 	dsn := "root:lmcmysql123@tcp(localhost:3306)/lourde?charset=utf8mb4&parseTime=True&loc=Local"
+	logger.Log.Print(mysql.Open(dsn))
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
