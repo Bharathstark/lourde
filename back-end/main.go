@@ -79,14 +79,14 @@ func main() {
 	spa := handler.SPAHandler{StaticPath: "dist", IndexPath: "index.html"}
 	apiRouter.Use(loggingMiddleware)
 	router.PathPrefix("/").Handler(spa)
-	cert, error := tls.LoadX509KeyPair("lourdemathaschool.edu.in.crt", "lourdemathaschool.edu.in.key")
+	cert, error := tls.LoadX509KeyPair("185.151.51.172.crt", "185.151.51.172.key")
 	if error != nil {
 		logger.Log.Print(error)
 	}
 
 	srv := &http.Server{
 		Handler: router,
-		Addr:    ":8080",
+		Addr:    ":443",
 		// Good practice: enforce timeouts for servers you create!
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,

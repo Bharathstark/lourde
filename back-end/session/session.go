@@ -33,7 +33,6 @@ func Initialize() {
 	)
 	Store.Options = &sessions.Options{
 		Path:     "/",
-		Domain:   "lourdemathaschool.edu.in",
 		MaxAge:   60 * 30,
 		Secure:   false,
 		HttpOnly: true,
