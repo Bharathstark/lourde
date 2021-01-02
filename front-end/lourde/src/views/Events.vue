@@ -1,11 +1,11 @@
 <template>
   <v-main>
     <v-card flat>
-      <v-toolbar color="white" flat>
+      <v-toolbar flat>
         <v-app-bar-nav-icon @click="toggle = !toggle"></v-app-bar-nav-icon>
         <AppBar v-model="toggle"></AppBar>
         <v-img class="shrink" src="../assets/logos.png" contain height="50px" />
-        <v-toolbar-title class="grey--text text--darken-4">
+        <v-toolbar-title>
           {{ moduleName }}
         </v-toolbar-title>
         <v-spacer></v-spacer>
@@ -28,7 +28,7 @@
             xs="6"
           >
             <v-card
-              :to="module + '/' + i.id"
+              :to="module + '?id=' + i.id"
               :height="
                 $vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 180 : 300
               "
@@ -54,7 +54,6 @@ export default {
   name: "Events",
   data: () => ({
     eventData: null,
-    module: null,
     apiURL: null,
     toggle: false,
     moduleName: ""
@@ -62,15 +61,17 @@ export default {
   components: {
     AppBar
   },
+  props: {
+    module: String
+  },
   methods: {
     setModule() {
       this.moduleName = this.$route.name;
-      this.module = this.$route.name.toLowerCase();
     },
     loging() {},
-    fetchData() {
+    async fetchData() {
       this.axios
-        .get("/api/v1/events?module=" + this.module)
+        .get("/api/v1/events?module=" + this.moduleName.toLowerCase())
         .then(response => {
           this.eventData = response.data["data"];
         })

@@ -1,7 +1,7 @@
 <template>
   <v-main>
     <v-card flat>
-      <v-toolbar color="white" flat>
+      <v-toolbar flat>
         <v-app-bar-nav-icon @click="toggle = !toggle"></v-app-bar-nav-icon>
         <AppBar v-model="toggle"></AppBar>
         <v-img class="shrink" src="../assets/logos.png" contain height="50px" />
@@ -141,7 +141,6 @@
 
 <script>
 import AppBar from "@/components/AppBar.vue";
-import confirmDialog from "@/components/ConfirmDialog.vue";
 export default {
   name: "AdminVideos",
   data: () => ({
@@ -160,7 +159,7 @@ export default {
   }),
   components: {
     AppBar,
-    confirmDialog
+    confirmDialog: () => import("@/components/ConfirmDialog.vue")
   },
   props: {
     bindinfo: Object
@@ -175,7 +174,7 @@ export default {
       this.link = "";
       this.date = "";
     },
-    fetchData() {
+    async fetchData() {
       this.axios
         .get(this.apiURL)
         .then(response => {

@@ -1,18 +1,18 @@
 <template>
   <v-main>
-    <v-toolbar color="white" flat>
+    <v-toolbar flat>
       <v-app-bar-nav-icon @click="toggle = !toggle"></v-app-bar-nav-icon>
       <AppBar v-model="toggle"></AppBar>
 
       <v-img class="shrink" src="../assets/logos.png" contain height="50px" />
-      <v-toolbar-title class="grey--text text--darken-4">
+      <v-toolbar-title>
         Contact Us
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
         v-for="links in icons"
         :key="links.icon"
-        :href="links.link"
+        :to="links.link"
         target="_blank"
         class="mx-4"
         icon

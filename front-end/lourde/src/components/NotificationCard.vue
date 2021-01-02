@@ -2,13 +2,14 @@
   <v-dialog
     v-model="dialog"
     @keydown.esc="cancel"
-    :max-width="($vuetify.breakpoint.xs || $vuetify.breakpoint.sm)?300:500"
-    :style="{ zIndex: options.zIndex }"
+    :fullscreen="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm"
+    :hide-overlay="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm"
+    :max-width="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 0 : 500"
   >
     <v-card>
-      <v-toolbar color="white">
+      <v-toolbar>
         <v-img class="shrink" src="../assets/logos.png" contain height="50px" />
-        <v-toolbar-title class="grey--text text--darken-4">
+        <v-toolbar-title>
           Notifications
         </v-toolbar-title>
         <v-spacer></v-spacer>
@@ -21,9 +22,9 @@
       </v-toolbar>
       <v-list class="overflow-y-auto" height="500">
         <v-list-item v-for="notification in notiData" :key="notification.id">
-          <v-list-item-title class="wrap-text">
+          <v-list-item-content class="wrap-text">
             {{ notification.name }}
-          </v-list-item-title>
+          </v-list-item-content>
           <v-list-item-icon v-show="notification.url != ''">
             <v-btn icon :href="notification.url" target="_blank">
               <v-icon>mdi-open-in-new</v-icon>
@@ -41,11 +42,7 @@ export default {
   data: () => ({
     dialog: false,
     notiURL: "/api/v1/notifications?module=notification",
-    notiData: [],
-    options: {
-      color: "primary",
-      zIndex: 200
-    }
+    notiData: []
   }),
   methods: {
     open() {

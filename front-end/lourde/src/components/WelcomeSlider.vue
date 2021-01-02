@@ -131,135 +131,15 @@
       </v-carousel>
     </section>
     <notification-card ref="notidialog"></notification-card>
-    <section id="ourSchool" data-aos="fade-up" data-aos-duration="2000">
-      <div class="py-6"></div>
-      <h2 id="ourSchoolHeader" class="text-md-h3 text-sm-h3  mb-3 text-center ">
-        Our School
-      </h2>
-      <v-row no-gutters cols="12" md="6">
-        <v-scale-transition>
-          <v-col
-            v-show="!($vuetify.breakpoint.xs || $vuetify.breakpoint.sm)"
-            cols="4"
-          >
-            <v-img max-height="80%" src="/img/slider/mother.jpg"> </v-img>
-          </v-col>
-        </v-scale-transition>
-        <v-col>
-          <v-container v-for="(item, i) in ourSchool" :key="i">
-            <v-card flat>
-              <v-card-title>{{ item.title }}</v-card-title>
-              <v-card-text class="text-md-body-1">{{ item.text }}</v-card-text>
-            </v-card>
-          </v-container>
-          <v-card-actions>
-            <v-btn text class=" ml-4" color="deep-purple accent-4">
-              Learn More
-            </v-btn>
-          </v-card-actions>
-        </v-col>
-      </v-row>
+    <section id="ourSchool" data-aos="fade-up" data-aos-duration="1000">
+      <OurSchool />
     </section>
     <DialogViewer ref="dialog"></DialogViewer>
     <section id="PrincipalAddress">
-      <div class="py-6"></div>
-      <v-card v-show="principal.date == 1" dark flat>
-        <v-img class="vimage" height="600" :src="principal.thumbnail">
-          <v-row>
-            <v-col cols="6" md="5" class="ml-auto">
-              <v-card-text
-                :style="
-                  $vuetify.breakpoint.xs || $vuetify.breakpoint.sm
-                    ? styled2
-                    : styled
-                "
-                class="text-center"
-              >
-                Principal Address
-              </v-card-text>
-              <v-card-text
-                :style="
-                  $vuetify.breakpoint.xs || $vuetify.breakpoint.sm
-                    ? styled2
-                    : styled
-                "
-              >
-                {{ principal.description }}
-              </v-card-text>
-              <v-row>
-                <v-col md="5" cols="6" class="ml-auto">
-                  <v-card-text
-                    :style="
-                      $vuetify.breakpoint.xs || $vuetify.breakpoint.sm
-                        ? styled2
-                        : styled
-                    "
-                  >
-                    - {{ principal.name }}
-                  </v-card-text>
-                </v-col>
-              </v-row>
-            </v-col>
-          </v-row>
-        </v-img>
-      </v-card>
+      <OurPrincipal />
     </section>
     <section id="Academics">
-      <div class="py-6"></div>
-      <h2 class="text-md-h3 text-sm-h3  mb-3 text-center ">Academics</h2>
-      <div class="py-6"></div>
-      <v-card flat>
-        <v-tabs color="deep-purple accent-4" centered>
-          <v-tab>12 Standard Results</v-tab>
-          <v-tab>10 Standard Results</v-tab>
-          <v-tab-item v-for="(students, i) in studentData" :key="i">
-            <v-container>
-              <v-row>
-                <v-col
-                  v-for="student in students"
-                  :key="student.id"
-                  cols="12"
-                  xs="6"
-                  sm="4"
-                  md="3"
-                  class="d-flex flex-column"
-                >
-                  <v-card class=" flex d-flex flex-column">
-                    <div class=" mt-8 text-center">
-                      <v-avatar size="130">
-                        <v-img large :src="student.thumbnail"></v-img>
-                      </v-avatar>
-                    </div>
-
-                    <v-list-item>
-                      <v-list-item-content>
-                        <v-list-item-title class="ma-2 text-center">{{
-                          student.name
-                        }}</v-list-item-title>
-                        <v-list-item-subtitle class=" text-center">{{
-                          student.description
-                        }}</v-list-item-subtitle>
-                      </v-list-item-content>
-                    </v-list-item>
-                    <v-list-item
-                      class="flex ml-10 mb-0"
-                      v-for="mark in student.marks"
-                      :key="mark.id"
-                    >
-                      <v-list-item-content>{{
-                        mark.field
-                      }}</v-list-item-content>
-                      <v-list-item-content>
-                        {{ mark.value }}
-                      </v-list-item-content>
-                    </v-list-item>
-                  </v-card>
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-tab-item>
-        </v-tabs>
-      </v-card>
+      <Academics />
     </section>
     <section id="Infrastructures" class=" lighten-3">
       <div class="py-12"></div>
@@ -282,9 +162,9 @@
             <v-card
               class="py-12 px-4"
               @click="showDialog(infra)"
-              color="grey lighten-5"
+              color=" lighten-5"
               data-aos="zoom-out-right"
-              data-aos-duration="2000"
+              data-aos-duration="2500"
             >
               <v-avatar size="100" tile>
                 <v-img large :src="getImgUrl(infra.iconurl)"></v-img>
@@ -314,10 +194,11 @@
             md="4"
           >
             <v-card
+              class="py-12 px-4"
               @click="showDialog(item)"
               color="lighten-5"
               data-aos="zoom-out-left"
-              data-aos-duration="2000"
+              data-aos-duration="2500"
             >
               <v-avatar size="120">
                 <v-img
@@ -345,7 +226,7 @@
       <v-slide-group center-active show-arrows>
         <v-slide-item v-for="event in eventData" :key="event.id">
           <v-card
-            :to="'/events/' + event.id"
+            :to="'/event?id=' + event.id"
             class="ma-6"
             :height="
               $vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 180 : 300
@@ -376,7 +257,7 @@
           :key="achievement.id"
         >
           <v-card
-            :to="'/achievements/' + achievement.id"
+            :to="'/achievement?id=' + achievement.id"
             class="ma-6"
             :height="
               $vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 180 : 300
@@ -418,13 +299,21 @@
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
             ></iframe>
-            <v-card-title class="ml-3 pa-0 text-lg-h6 text-subtitle-2">
+            <v-card-title
+              class="ml-3 pa-0 text-lg-h6 text-sm-body-1 text-subtitle-2"
+            >
               {{ video.name }}
             </v-card-title>
             <v-card-title class="ml-2 pa-1">
-              <v-chip v-show="!($vuetify.breakpoint.xs || $vuetify.breakpoint.sm)" small outlined color="deep-purple accent-4">{{
-                new Date(video.date).toISOString().substring(0, 10)
-              }}</v-chip>
+              <v-chip
+                v-show="!($vuetify.breakpoint.xs || $vuetify.breakpoint.sm)"
+                small
+                outlined
+                color="deep-purple accent-4"
+                >{{
+                  new Date(video.date).toISOString().substring(0, 10)
+                }}</v-chip
+              >
             </v-card-title>
           </v-card>
         </v-slide-item>
@@ -439,13 +328,21 @@
         <v-card-text class="font-weight text-white"
           >Lourde Matha Convent Matriculation Higher Secondary School
           <br />Dhali road, Bodipatti(PO), <br />Udumalpet - 642154, <br />Tamil
-          Nadu,
+          Nadu, <br />
+          04252 - 231288<br />
         </v-card-text>
 
         <v-card-text>
-          <v-btn v-for="icon in icons" :key="icon" class="mx-4" icon>
+          <v-btn
+            v-for="icon in icons"
+            :key="icon"
+            :href="icon.link"
+            target="_blank"
+            class="mx-4"
+            icon
+          >
             <v-icon size="24px">
-              {{ icon }}
+              {{ icon.icon }}
             </v-icon>
           </v-btn>
         </v-card-text>
@@ -467,13 +364,14 @@
 <script>
 import "aos/dist/aos.css";
 import AOS from "aos";
-import DialogViewer from "./DialogViewer.vue";
-import NotificationCard from "./NotificationCard.vue";
 export default {
   name: "WelcomeSlider",
   components: {
-    NotificationCard,
-    DialogViewer
+    NotificationCard: () => import("./NotificationCard.vue"),
+    DialogViewer: () => import("./DialogViewer.vue"),
+    OurSchool: () => import("./OurSchool.vue"),
+    OurPrincipal: () => import("./OurPrincipal.vue"),
+    Academics: () => import("./Academics.vue")
   },
 
   data: () => ({
@@ -481,20 +379,14 @@ export default {
     achievementURL: "/api/v1/events?module=achievements",
     VideoURL: "/api/v1/notifications?module=videos",
     bannerURL: "/api/v1/notifications?module=banner",
-    principalURL: "/api/v1/events?module=principal",
-    studentURL: "/api/v1/students",
-    styled: "font-family:'Coronet';font-size:35px;line-height: 1.1",
     styled2: "font-family:'Coronet';font-size:19px;line-height: 1.0",
     styled3:
       "font-family:'Coronet';font-size:28px;line-height: 0.9;font-weight: bold;",
     eventData: [],
-    studentData: [],
     achievementData: [],
     videoData: [],
     bannerData: [],
-    principalData: [],
     banner: {},
-    principal: {},
     dialog: false,
     drawer: false,
     AppBarItems: [
@@ -508,11 +400,11 @@ export default {
       },
       {
         display: "Achievements",
-        href: "/achievements"
+        href: "#/achievements"
       },
       {
         display: "Events",
-        href: "/events"
+        href: "#/events"
       },
       {
         display: "Infrastructures",
@@ -524,7 +416,7 @@ export default {
       },
       {
         display: "Contact Us",
-        href: "/contact"
+        href: "#/contact"
       }
     ],
     items: [
@@ -539,23 +431,6 @@ export default {
       {
         src: "/img/slider/thumbs.jpg",
         text: "Lourde Matha Convent Matric Higher Secondary School"
-      }
-    ],
-    ourSchool: [
-      {
-        title: "Our Vision",
-        text:
-          "We aim at an all round formation where the character and personality development of the student, based on the teachings of Christ is focused at, so as to make them useful and efficient members of the society and the world at large "
-      },
-      {
-        title: "Our Mission",
-        text:
-          "Our Mission is to educate children to become active and responsible citizens. To impart knowledge and wisdom with love and dedication. To mould Christ like leaders who will transform the society"
-      },
-      {
-        title: "Our Establishment",
-        text:
-          "Our School is recognized by the board of Matriculation school under the Education Department of Tamil Nadu and trains students for Matriculation and Higher Secondary Examinations. The medium of instruction and communication is English.Currently Lourde Matha academic community consists of 2000 plus students and 100 staffs. Both the staff and students are orienting for an integrated life with a vision of self formation. Staff are dedicated for the student community, for their scholastic excellence in academics and in other activities. The commitment of the staff, co-operation of the parents, response of the students, altogether makes the institution vibrant and excellent.The management sees that the institution not only imparts knowledge but also cares for spiritual and moral well being of pupils, entrusted under their care."
       }
     ],
     Facilities: [
@@ -785,11 +660,14 @@ export default {
       }
     ],
     icons: [
-      "mdi-facebook",
-      "mdi-twitter",
-      "mdi-linkedin",
-      "mdi-instagram",
-      "mdi-youtube"
+      {
+        icon: "mdi-youtube",
+        link: "https://www.youtube.com/channel/UC3jmIA7i91OC4o4gboaAnXg"
+      },
+      {
+        icon: "mdi-gmail",
+        link: "mailto:lmcm.school@yahoo.com"
+      }
     ]
   }),
   created() {
@@ -801,11 +679,6 @@ export default {
       if (newValue != undefined) {
         this.banner = newValue[0];
       }
-    },
-    principalData: function(newValue) {
-      if (newValue != undefined) {
-        this.principal = newValue[0];
-      }
     }
   },
 
@@ -816,7 +689,7 @@ export default {
     showDialog(data) {
       this.$refs.dialog.open(data);
     },
-    fetchData(url) {
+    async fetchData(url) {
       return this.axios
         .get(url)
         .then(response => {
@@ -826,7 +699,7 @@ export default {
           console.log(error);
         });
     },
-    fetchCreateData() {
+    async fetchCreateData() {
       this.fetchData(this.eventURL).then(data => (this.eventData = data));
 
       this.fetchData(this.achievementURL).then(
@@ -834,15 +707,6 @@ export default {
       );
       this.fetchData(this.VideoURL).then(data => (this.videoData = data));
       this.fetchData(this.bannerURL).then(data => (this.bannerData = data));
-      this.fetchData(this.principalURL).then(
-        data => (this.principalData = data)
-      );
-      this.fetchData(this.studentURL + "?module=12").then(data =>
-        this.studentData.push(data)
-      );
-      this.fetchData(this.studentURL + "?module=10").then(data =>
-        this.studentData.push(data)
-      );
     }
   }
 };

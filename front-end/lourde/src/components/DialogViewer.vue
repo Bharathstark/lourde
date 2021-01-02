@@ -6,23 +6,24 @@
     transition="dialog-bottom-transition"
     @keydown.esc="cancel"
   >
-    <v-toolbar fixed>
-      <v-btn icon @click="dialog = false">
-        <v-icon>mdi-close</v-icon>
-      </v-btn>
-      <v-toolbar-title>{{ data.name }}</v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-toolbar-items>
-        <v-btn text @click="dialog = false">
-          Close
+    <v-card flat class="overflow-y-auto">
+      <v-toolbar flat>
+        <v-btn icon @click="dialog = false">
+          <v-icon>mdi-close</v-icon>
         </v-btn>
-      </v-toolbar-items>
-    </v-toolbar>
-    <v-card class="overflow-y-auto">
+        <v-toolbar-title>{{ data.name }}</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-toolbar-items>
+          <v-btn text @click="dialog = false">
+            Close
+          </v-btn>
+        </v-toolbar-items>
+      </v-toolbar>
       <v-container fluid v-for="header in data.headers" :key="header.heading">
-        <v-card-title class="justify-center text-md-body text-uppercase">{{
-          header.heading
-        }}</v-card-title>
+        <v-card-title
+          class="justify-center text-md-body-1 text-sm-body-1 text-body-1 text-uppercase"
+          >{{ header.heading }}</v-card-title
+        >
         <v-row>
           <v-col
             v-for="i in header.images"
@@ -60,3 +61,8 @@ export default {
   }
 };
 </script>
+<style>
+.vimage .v-image__image {
+  background-size: 100% 100%;
+}
+</style>

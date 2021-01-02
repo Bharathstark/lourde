@@ -1,11 +1,11 @@
 <template>
   <v-main>
     <v-card flat>
-      <v-toolbar color="white" flat>
+      <v-toolbar flat>
         <v-app-bar-nav-icon @click="toggle = !toggle"></v-app-bar-nav-icon>
         <AppBar v-model="toggle"></AppBar>
         <v-img class="shrink" src="../assets/logos.png" contain height="50px" />
-        <v-toolbar-title class="grey--text text--darken-4">
+        <v-toolbar-title>
           Videos
         </v-toolbar-title>
         <v-spacer></v-spacer>
@@ -45,13 +45,19 @@
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
               ></iframe>
-              <v-card-title class="ml-3 pa-0 text-lg-h6 text-subtitle-2">
+              <v-card-title
+                class="ml-3 pa-0 text-lg-h6 text-sm-body-1 text-subtitle-2"
+              >
                 {{ i.name }}
               </v-card-title>
               <v-card-title class="ml-2 pa-0">
-                <v-chip small outlined color="deep-purple accent-4">{{
-                  new Date(i.date).toISOString().substring(0, 10)
-                }}</v-chip>
+                <v-chip
+                  v-show="!($vuetify.breakpoint.xs || $vuetify.breakpoint.sm)"
+                  small
+                  outlined
+                  color="deep-purple accent-4"
+                  >{{ new Date(i.date).toISOString().substring(0, 10) }}</v-chip
+                >
               </v-card-title>
             </v-card>
           </v-col>
@@ -74,7 +80,7 @@ export default {
     AppBar
   },
   methods: {
-    fetchData() {
+    async fetchData() {
       this.axios
         .get(this.apiURL)
         .then(response => {

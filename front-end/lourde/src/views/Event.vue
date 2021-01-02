@@ -1,12 +1,12 @@
 <template>
   <v-main>
     <v-card flat>
-      <v-toolbar color="white" flat>
+      <v-toolbar flat>
         <v-app-bar-nav-icon @click="toggle = !toggle"></v-app-bar-nav-icon>
         <AppBar v-model="toggle"></AppBar>
 
         <v-img class="shrink" src="../assets/logos.png" contain height="50px" />
-        <v-toolbar-title class="grey--text text--darken-4">
+        <v-toolbar-title>
           {{ eventData.name }}
         </v-toolbar-title>
       </v-toolbar>
@@ -14,7 +14,6 @@
       <v-tabs color="deep-purple accent-4" right>
         <v-tab>Grid</v-tab>
         <v-tab>show</v-tab>
-
         <v-tab-item>
           <v-container fluid>
             <v-row>
@@ -64,15 +63,23 @@ export default {
   components: {
     AppBar
   },
+  props: {
+    eventID: String
+  },
   methods: {
-    fetchData() {
+    async fetchData() {
+      console.log(this.$route);
       this.axios
-        .get("/api/v1/events/" + this.$route.params.id)
+        .get("/api/v1/events/" + this.eventID)
         .then(response => {
           this.eventData = response.data["data"];
+          if (response.data.response_status.response_code != 200) {
+            this.$router.push("/");
+          }
         })
         .catch(error => {
           console.log(error);
+          this.$router.push("/");
         });
     }
   },

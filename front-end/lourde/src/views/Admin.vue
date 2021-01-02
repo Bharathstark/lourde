@@ -52,24 +52,17 @@
 </template>
 
 <script>
-import DashBoard from "@/components/DashBoard.vue";
-import AdminEvent from "@/components/AdminEvent.vue";
-import AdminEvents from "@/components/AdminEntities.vue";
-import AdminCalendar from "@/components/AdminCalendar.vue";
-import AdminVideos from "@/components/AdminVideos.vue";
-import AdminStudents from "@/components/AdminStudents.vue";
-import AdminPrincipal from "@/components/AdminPrincipal.vue";
 import alertDialog from "@/components/SnackBarDialog.vue";
 export default {
   name: "Admin",
   components: {
-    DashBoard,
-    AdminEvent,
-    AdminEvents,
-    AdminCalendar,
-    AdminVideos,
-    AdminStudents,
-    AdminPrincipal,
+    DashBoard: () => import("@/components/DashBoard.vue"),
+    AdminEvent: () => import("@/components/AdminEvent.vue"),
+    AdminEvents: () => import("@/components/AdminEntities.vue"),
+    AdminCalendar: () => import("@/components/AdminCalendar.vue"),
+    AdminVideos: () => import("@/components/AdminVideos.vue"),
+    AdminStudents: () => import("@/components/AdminStudents.vue"),
+    AdminPrincipal: () => import("@/components/AdminPrincipal.vue"),
     alertDialog
   },
   data: () => ({

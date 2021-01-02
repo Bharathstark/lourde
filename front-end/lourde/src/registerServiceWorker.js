@@ -3,7 +3,7 @@
 import { register } from "register-service-worker";
 
 if (process.env.NODE_ENV === "production") {
-  register(`${process.env.BASE_URL}service-worker.js`, {
+  register(`${process.env.BASE_URL}lourde-worker.js`, {
     ready() {
       console.log(
         "App is being served from cache by a service worker.\n" +
@@ -21,6 +21,9 @@ if (process.env.NODE_ENV === "production") {
     },
     updated() {
       console.log("New content is available; please refresh.");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     },
     offline() {
       console.log(

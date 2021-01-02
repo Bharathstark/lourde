@@ -1,10 +1,10 @@
 <template>
   <v-main>
-    <v-toolbar color="white" flat>
+    <v-toolbar flat>
       <v-app-bar-nav-icon @click="toggle = !toggle"></v-app-bar-nav-icon>
       <AppBar v-model="toggle"></AppBar>
       <v-img class="shrink" src="../assets/logos.png" contain height="50px" />
-      <v-toolbar-title class="grey--text text--darken-4">
+      <v-toolbar-title>
         DashBoard
       </v-toolbar-title>
       <v-spacer></v-spacer>
@@ -309,14 +309,13 @@
 import MaterialCard from "@/components/MaterialCard.vue";
 import MaterialStatsCard from "@/components/MaterialStatsCard.vue";
 import AppBar from "@/components/AppBar.vue";
-import confirmDialog from "@/components/ConfirmDialog.vue";
 export default {
   name: "DashBoard",
   components: {
     MaterialCard,
     MaterialStatsCard,
     AppBar,
-    confirmDialog
+    confirmDialog: () => import("@/components/ConfirmDialog.vue")
   },
   data: () => ({
     toggle: false,
@@ -343,38 +342,7 @@ export default {
     name: "",
     link: "",
     date: "",
-    banner: "",
-    items: [
-      {
-        icon: "mdi-wifi",
-        text: "Wifi bhsdbhsdhbshd sdbsbdbsd"
-      },
-      {
-        icon: "mdi-bluetooth",
-        text: "Wifi bhsdbhsdhbshd sdbsbdbsd"
-      },
-      {
-        icon: "mdi-chart-donut",
-        text:
-          "Wifi bhsdbhsdhbshd sdbsbdbsd ndjndnjsndjnjsddddddddddddddddd ddddddddddddddddddddddddddddddddddddddddd"
-      },
-      {
-        icon: "mdi-chart-donut",
-        text:
-          "Wifi bhsdbhsdhbshd sdbsbdbsd ndjndnjsndjnjsdddddddddddddddd dddddddddddddddddddddddddddddddddddddddddd"
-      },
-      {
-        icon: "mdi-chart-donut",
-        text:
-          "Wifi bhsdbhsdhbshd sdbsbdbsd ndjndnjsndjnjsddddddddddddddc dddddddddddddddddddddddddddddddddddddddddddd"
-      },
-      {
-        icon: "mdi-chart-donut",
-        text:
-          "Wifi bhsdbhsdhbshd sdbsbdbsd ndjndnjsndjnjsdddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
-      }
-    ],
-    model: 1
+    banner: ""
   }),
   props: {
     bindinfo: Object
@@ -432,6 +400,7 @@ export default {
                   this.$refs.notiform.reset();
                   this.notidialog = false;
                   this.fetchNotiData("notification", this.notiURL);
+                  this.fetchHelathData();
                 }
               });
           }
@@ -486,6 +455,7 @@ export default {
               this.id = null;
               if (response.data.response_status.response_code == 200) {
                 this.fetchNotiData("notification", this.notiURL);
+                this.fetchHelathData();
               }
             });
           }

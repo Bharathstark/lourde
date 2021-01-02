@@ -2,7 +2,7 @@
   <v-menu top v-bind="$attrs" v-on="$listeners">
     <v-list>
       <v-list-item v-for="(AppBarItem, index) in AppBarItems" :key="index">
-        <v-btn text :href="AppBarItem.href">{{ AppBarItem.display }}</v-btn>
+        <v-btn text :to="AppBarItem.href">{{ AppBarItem.display }}</v-btn>
       </v-list-item>
     </v-list>
   </v-menu>
@@ -16,30 +16,30 @@ export default {
     AppBarItems: [
       {
         display: "Home",
-        href: "/"
-      },
-      {
-        display: "Achievements",
-        href: "/achievements"
+        href: "/",
       },
       {
         display: "Events",
-        href: "/events"
+        href: "/events",
       },
       {
         display: "Videos",
-        href: "/videos"
+        href: "/videos",
+      },
+      {
+        display: "Achievements",
+        href: "/achievements",
       },
       {
         display: "Calendar",
-        href: "/calendar"
+        href: "/calendar",
       },
       {
         display: "Contact Us",
-        href: "/contact"
-      }
-    ]
-  })
+        href: "/contact",
+      },
+    ],
+  }),
 };
 </script>
 

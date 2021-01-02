@@ -4,7 +4,7 @@
     <v-layout class="pt-10"> </v-layout>
     <v-layout wrap>
       <v-flex class="pt-15" sm8 md6 offset-md3 offset-sm2>
-        <v-card elevation="4" light tag="section">
+        <v-card elevation="4" tag="section">
           <v-card-title>
             <v-layout align-center justify-space-between>
               <h3 class="headline">
@@ -63,11 +63,10 @@
 </template>
 
 <script>
-import alertDialog from "@/components/SnackBarDialog.vue";
 export default {
   name: "Login",
   components: {
-    alertDialog
+    alertDialog: () => import("@/components/SnackBarDialog.vue")
   },
   data: () => ({
     step: 1,

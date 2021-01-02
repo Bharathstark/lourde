@@ -1,11 +1,13 @@
-import Vue from "vue";
-import App from "./App.vue";
-import axios from "./plugins/axios";
+import "@mdi/font/css/materialdesignicons.css";
 import "./registerServiceWorker";
+
+import App from "./App.vue";
+import Vue from "vue";
+import VueCookies from "vue-cookies";
+import VueGtag from "vue-gtag";
+import axios from "./plugins/axios";
 import router from "./router";
 import vuetify from "./plugins/vuetify";
-import VueGtag from "vue-gtag";
-import VueCookies from "vue-cookies";
 
 Vue.config.productionTip = false;
 Vue.use(VueCookies);

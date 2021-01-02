@@ -1,11 +1,11 @@
 <template>
   <v-main>
     <v-card flat height="100%">
-      <v-toolbar color="white" flat>
+      <v-toolbar flat>
         <v-app-bar-nav-icon @click="toggle = !toggle"></v-app-bar-nav-icon>
         <AppBar v-model="toggle"></AppBar>
         <v-img class="shrink" src="../assets/logos.png" contain height="50px" />
-        <v-toolbar-title class="grey--text text--darken-4">
+        <v-toolbar-title>
           {{ bindinfo.module }}
         </v-toolbar-title>
         <v-spacer></v-spacer>
@@ -140,7 +140,6 @@
 
 <script>
 import AppBar from "@/components/AppBar.vue";
-import confirmDialog from "@/components/ConfirmDialog.vue";
 export default {
   name: "AdminEvent",
   data: () => ({
@@ -162,10 +161,10 @@ export default {
   },
   components: {
     AppBar,
-    confirmDialog
+    confirmDialog: () => import("@/components/ConfirmDialog.vue")
   },
   methods: {
-    fetchData() {
+    async fetchData() {
       this.axios
         .get(this.apiURL + "?module=" + this.bindinfo.module.toLowerCase())
         .then(response => {

@@ -1,10 +1,10 @@
 <template>
   <v-main>
-    <v-toolbar color="white" flat>
+    <v-toolbar flat>
       <v-app-bar-nav-icon @click="toggle = !toggle"></v-app-bar-nav-icon>
       <AppBar v-model="toggle"></AppBar>
       <v-img class="shrink" src="../assets/logos.png" contain height="50px" />
-      <v-toolbar-title class="grey--text text--darken-4">
+      <v-toolbar-title>
         Admin-Students
       </v-toolbar-title>
       <v-spacer></v-spacer>
@@ -204,7 +204,6 @@
 
 <script>
 import AppBar from "@/components/AppBar.vue";
-import confirmDialog from "@/components/ConfirmDialog.vue";
 export default {
   name: "AdminStudents",
   data: () => ({
@@ -234,7 +233,7 @@ export default {
   }),
   components: {
     AppBar,
-    confirmDialog
+    confirmDialog: () => import("@/components/ConfirmDialog.vue")
   },
   props: {
     bindinfo: Object

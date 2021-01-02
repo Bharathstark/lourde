@@ -48,8 +48,14 @@ func handleGETAllEventImages(w http.ResponseWriter, r *http.Request) (response *
 	if found {
 		return ConstructResponse(&data, "success")
 	}
-	database.GetEntity(&event, &id)
-	error := database.GetAllChildEntity(&event, &eventImages, "EventImages")
+	rows, error := database.GetEntity(&event, &id)
+	if *rows <= 0 || *error != nil {
+		return ConstructResponse(&ResponseMessage{
+			Status: http.StatusInternalServerError,
+			Msg:    "Invalid URL - no data found",
+		}, "custom")
+	}
+	error = database.GetAllChildEntity(&event, &eventImages, "EventImages")
 	if *error != nil {
 		return ConstructResponse(error, "failed")
 	}

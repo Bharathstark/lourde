@@ -234,8 +234,14 @@ func handleDELETEMarks(w http.ResponseWriter, r *http.Request) (response *Respon
 	vars := mux.Vars(r)
 	id := vars["id"]
 	var studentMark database.Marks
-	database.GetEntity(&studentMark, &id)
-	_, error := database.DeleteEntity(&studentMark)
+	rows, error := database.GetEntity(&studentMark, &id)
+	if *rows <= 0 || *error != nil {
+		return ConstructResponse(&ResponseMessage{
+			Status: http.StatusInternalServerError,
+			Msg:    "Invalid URL - no data found",
+		}, "custom")
+	}
+	_, error = database.DeleteEntity(&studentMark)
 	if *error != nil {
 		return ConstructResponse(error, "failed")
 	}

@@ -1,20 +1,35 @@
 <template>
   <v-app>
-    <router-view />
+    <confirmDialog ref="confirm" />
+    <router-view :key="$route.fullPath" />
   </v-app>
 </template>
 
 <script>
 export default {
   name: "App",
-
+  components: {
+    confirmDialog: () => import("@/components/ConfirmDialog.vue")
+  },
   data: () => ({
     //
   }),
-  components: {},
   created() {
     window.addEventListener("beforeinstallprompt", e => {
-      e.prompt();
+      e.preventDefault();
+      this.$refs.confirm
+        .open(
+          "Install",
+          "Do You Want to install this Application? No Additional Space Required",
+          {
+            color: "green"
+          }
+        )
+        .then(confirm => {
+          if (confirm) {
+            e.prompt();
+          }
+        });
     });
   }
 };
