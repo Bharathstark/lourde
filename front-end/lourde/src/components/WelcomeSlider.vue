@@ -371,7 +371,7 @@ export default {
     DialogViewer: () => import("./DialogViewer.vue"),
     OurSchool: () => import("./OurSchool.vue"),
     OurPrincipal: () => import("./OurPrincipal.vue"),
-    Academics: () => import("./Academics.vue")
+    Academics: () => import("./Academics.vue"),
   },
 
   data: () => ({
@@ -392,46 +392,50 @@ export default {
     AppBarItems: [
       {
         display: "Home",
-        href: "/"
+        href: "/",
       },
       {
         display: "Academics",
-        href: "#Academics"
+        href: "#Academics",
       },
       {
         display: "Achievements",
-        href: "#/achievements"
+        href: "#/achievements",
       },
       {
         display: "Events",
-        href: "#/events"
+        href: "#/events",
       },
       {
         display: "Infrastructures",
-        href: "#Infrastructures"
+        href: "#Infrastructures",
       },
       {
         display: "Facilities",
-        href: "#Facilities"
+        href: "#Facilities",
+      },
+      {
+        display: "Calendar",
+        href: "#/calendar",
       },
       {
         display: "Contact Us",
-        href: "#/contact"
-      }
+        href: "#/contact",
+      },
     ],
     items: [
       {
         src: "/img/slider/school.jpg",
-        text: "Lourde Matha Convent Matric Higher Secondary School"
+        text: "Lourde Matha Convent Matric Higher Secondary School",
       },
       {
         src: "/img/slider/smile.JPG",
-        text: "A Reflection of Beauty and Joy "
+        text: "A Reflection of Beauty and Joy ",
       },
       {
         src: "/img/slider/thumbs.jpg",
-        text: "Lourde Matha Convent Matric Higher Secondary School"
-      }
+        text: "Lourde Matha Convent Matric Higher Secondary School",
+      },
     ],
     Facilities: [
       {
@@ -445,10 +449,10 @@ export default {
               "/facilities/smarttech/NSN_6232-min-compressed.jpg",
               "/facilities/smarttech/NSN_6234-min-compressed.jpg",
               "/facilities/smarttech/STIL-Lab.jpg",
-              "/facilities/smarttech/TEC-Teaching.jpg"
-            ]
-          }
-        ]
+              "/facilities/smarttech/TEC-Teaching.jpg",
+            ],
+          },
+        ],
       },
       {
         name: "Expert sessions",
@@ -461,10 +465,10 @@ export default {
               "/facilities/expertsession/1 (2).jpg",
               "/facilities/expertsession/1 (3).jpg",
               "/facilities/expertsession/Sessions-by-Expert_5.jpg",
-              "/facilities/expertsession/Sessions-by-Expert_6.jpg"
-            ]
-          }
-        ]
+              "/facilities/expertsession/Sessions-by-Expert_6.jpg",
+            ],
+          },
+        ],
       },
       {
         name: "Counselling",
@@ -475,10 +479,10 @@ export default {
             images: [
               "/facilities/counselling/Councling_1.jpg",
               "/facilities/counselling/Councling_2.jpg",
-              "/facilities/counselling/Councling_3.jpg"
-            ]
-          }
-        ]
+              "/facilities/counselling/Councling_3.jpg",
+            ],
+          },
+        ],
       },
       {
         name: "Sports",
@@ -490,10 +494,10 @@ export default {
               "/facilities/sports/NSN_6319-min-compressed.jpg",
               "/facilities/sports/NSN_6331-min-compressed.jpg",
               "/facilities/sports/NSN_6394-min-compressed.jpg",
-              "/facilities/sports/NSN_6396-min-compressed.jpg"
-            ]
-          }
-        ]
+              "/facilities/sports/NSN_6396-min-compressed.jpg",
+            ],
+          },
+        ],
       },
       {
         name: "Transport",
@@ -504,10 +508,10 @@ export default {
             images: [
               "/facilities/transport/NSN_6799-min-compressed.jpg",
               "/facilities/transport/NSN_6805-min-compressed.jpg",
-              "/facilities/transport/NSN_6816-min-compressed.jpg"
-            ]
-          }
-        ]
+              "/facilities/transport/NSN_6816-min-compressed.jpg",
+            ],
+          },
+        ],
       },
       {
         name: "Parking",
@@ -518,15 +522,15 @@ export default {
             images: [
               "/facilities/parking/NSN_6207-min-compressed.jpg",
               "/facilities/parking/NSN_6224-min-compressed.jpg",
-              "/facilities/parking/NSN_6225-min-compressed.jpg"
-            ]
-          }
-        ]
+              "/facilities/parking/NSN_6225-min-compressed.jpg",
+            ],
+          },
+        ],
       },
       {
         name: "Vibrant community ",
         iconurl: "/icons/vibrant.png",
-        headers: []
+        headers: [],
       },
       {
         name: "Parents meeting",
@@ -534,9 +538,9 @@ export default {
         headers: [
           {
             heading: "Parents meeting",
-            images: ["/facilities/meetings/Parents-Meeting.jpg"]
-          }
-        ]
+            images: ["/facilities/meetings/Parents-Meeting.jpg"],
+          },
+        ],
       },
       {
         name: "Seminars",
@@ -547,11 +551,11 @@ export default {
             images: [
               "/facilities/seminar/IMG_20190713_113028-min.jpg",
               "/facilities/seminar/IMG_20190713_113145-min.jpg",
-              "/facilities/seminar/IMG_20190713_113154-min.jpg"
-            ]
-          }
-        ]
-      }
+              "/facilities/seminar/IMG_20190713_113154-min.jpg",
+            ],
+          },
+        ],
+      },
     ],
     Infrastructures: [
       {
@@ -566,10 +570,10 @@ export default {
               "/infrastructure/campus/NSN_5939-min-compressed.jpg",
               "/infrastructure/campus/NSN_6808-min-compressed.jpg",
               "/infrastructure/campus/NSN_6830-min-compressed.jpg",
-              "/infrastructure/campus/NSN_6848-min-compressed.jpg"
-            ]
-          }
-        ]
+              "/infrastructure/campus/NSN_6848-min-compressed.jpg",
+            ],
+          },
+        ],
       },
       {
         name: "Advanced Lab's",
@@ -588,10 +592,10 @@ export default {
               "/infrastructure/labs/NSN_6709-min-compressed.jpg",
               "/infrastructure/labs/NSN_6711-min-compressed.jpg",
               "/infrastructure/labs/NSN_6713-min-compressed.jpg",
-              "/infrastructure/labs/NSN_6717-min-compressed.jpg"
-            ]
-          }
-        ]
+              "/infrastructure/labs/NSN_6717-min-compressed.jpg",
+            ],
+          },
+        ],
       },
       {
         name: "Academic Library",
@@ -603,10 +607,10 @@ export default {
               "/infrastructure/library/Lib_3.jpg",
               "/infrastructure/library/NSN_6081-min-compressed.jpg",
               "/infrastructure/library/NSN_6098-min-compressed.jpg",
-              "/infrastructure/library/NSN_6101-min-compressed.jpg"
-            ]
-          }
-        ]
+              "/infrastructure/library/NSN_6101-min-compressed.jpg",
+            ],
+          },
+        ],
       },
       {
         name: "Pleasant feel garden ",
@@ -617,10 +621,10 @@ export default {
             images: [
               "/infrastructure/garden/NSN_6185-min-compressed.jpg",
               "/infrastructure/garden/NSN_6198-min-compressed.jpg",
-              "/infrastructure/garden/garden2.jpg"
-            ]
-          }
-        ]
+              "/infrastructure/garden/garden2.jpg",
+            ],
+          },
+        ],
       },
       {
         name: "Soft play park",
@@ -640,10 +644,10 @@ export default {
               "/infrastructure/park/DSC_0038-min-compressed.jpg",
               "/infrastructure/park/NSN_5959-min-compressed.jpg",
               "/infrastructure/park/NSN_5970-min-compressed.jpg",
-              "/infrastructure/park/NSN_5985-min-compressed.jpg"
-            ]
-          }
-        ]
+              "/infrastructure/park/NSN_5985-min-compressed.jpg",
+            ],
+          },
+        ],
       },
       {
         name: "Spacious conference hall's",
@@ -653,22 +657,22 @@ export default {
             heading: "conference hall",
             images: [
               "/infrastructure/conference/1 (2).jpg",
-              "/infrastructure/conference/conference.jpg"
-            ]
-          }
-        ]
-      }
+              "/infrastructure/conference/conference.jpg",
+            ],
+          },
+        ],
+      },
     ],
     icons: [
       {
         icon: "mdi-youtube",
-        link: "https://www.youtube.com/channel/UC3jmIA7i91OC4o4gboaAnXg"
+        link: "https://www.youtube.com/channel/UC3jmIA7i91OC4o4gboaAnXg",
       },
       {
         icon: "mdi-gmail",
-        link: "mailto:lmcm.school@yahoo.com"
-      }
-    ]
+        link: "mailto:lmcm.school@yahoo.com",
+      },
+    ],
   }),
   created() {
     this.fetchCreateData();
@@ -679,7 +683,7 @@ export default {
       if (newValue != undefined) {
         this.banner = newValue[0];
       }
-    }
+    },
   },
 
   methods: {
@@ -692,23 +696,23 @@ export default {
     async fetchData(url) {
       return this.axios
         .get(url)
-        .then(response => {
+        .then((response) => {
           return response.data["data"];
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
     async fetchCreateData() {
-      this.fetchData(this.eventURL).then(data => (this.eventData = data));
+      this.fetchData(this.eventURL).then((data) => (this.eventData = data));
 
       this.fetchData(this.achievementURL).then(
-        data => (this.achievementData = data)
+        (data) => (this.achievementData = data)
       );
-      this.fetchData(this.VideoURL).then(data => (this.videoData = data));
-      this.fetchData(this.bannerURL).then(data => (this.bannerData = data));
-    }
-  }
+      this.fetchData(this.VideoURL).then((data) => (this.videoData = data));
+      this.fetchData(this.bannerURL).then((data) => (this.bannerData = data));
+    },
+  },
 };
 </script>
 
