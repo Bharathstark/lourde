@@ -20,6 +20,8 @@ func loggingMiddleware(next http.Handler) http.Handler {
 		if r.Method != "GET" {
 			logger.Log.Printf(r.Host + " - " + r.Method + " - " + r.RequestURI + " - " + r.RemoteAddr)
 			next.ServeHTTP(w, r)
+		} else {
+			next.ServeHTTP(w, r)
 		}
 	})
 }
