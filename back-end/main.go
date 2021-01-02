@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/tls"
 	"encoding/json"
 	"log"
 	"net/http"
@@ -75,25 +76,25 @@ func main() {
 	spa := handler.SPAHandler{StaticPath: "dist", IndexPath: "index.html"}
 	apiRouter.Use(loggingMiddleware)
 	router.PathPrefix("/").Handler(spa)
-	//cert, error := tls.LoadX509KeyPair("/etc/ssl/certs/certificate.crt", "/etc/ssl/private/private.key")
-	//if error != nil {
-	//	logger.Log.Print(error)
-	//}
+	cert, error := tls.LoadX509KeyPair("certificate.crt", "private.key")
+	if error != nil {
+		logger.Log.Print(error)
+	}
 
 	srv := &http.Server{
 		Handler:      router,
-		Addr:         ":80",
+		Addr:         ":443",
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
-		//TLSConfig: &tls.Config{
-		//	Certificates: []tls.Certificate{cert},
-		//},
+		TLSConfig: &tls.Config{
+			Certificates: []tls.Certificate{cert},
+		},
 	}
 
-	//go http.ListenAndServe(":80", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-	//http.Redirect(w, r, "https://"+r.Host+r.URL.String(), http.StatusMovedPermanently)
-	//}))
+	go http.ListenAndServe(":80", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, "https://"+r.Host+r.URL.String(), http.StatusMovedPermanently)
+	}))
 
-	log.Fatal(srv.ListenAndServe())
+	log.Fatal(srv.ListenAndServeTLS("", ""))
 
 }
