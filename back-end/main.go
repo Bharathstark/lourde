@@ -16,13 +16,10 @@ import (
 
 func loggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-
-		// Do stuff here
-		logger.Log.Printf(r.Host + " - " + r.Method + " - " + r.RequestURI + " - " + r.RemoteAddr)
-		// Call the next handler, which can be another middleware in the chain, or the final handler.
-		w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.Header().Set("Access-Control-Allow-Headers", "*")
-		next.ServeHTTP(w, r)
+		if r.Method != "GET" {
+			logger.Log.Printf(r.Host + " - " + r.Method + " - " + r.RequestURI + " - " + r.RemoteAddr)
+			next.ServeHTTP(w, r)
+		}
 	})
 }
 
