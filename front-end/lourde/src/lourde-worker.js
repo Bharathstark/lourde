@@ -15,13 +15,13 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('activate', () => {
-  console.log("clients Claim")
   self.clients.claim();
   
 });
 
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+workbox.routing.registerNavigationRoute("/index.html");
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
  * requests for URLs in the manifest.
@@ -106,4 +106,4 @@ workbox.routing.registerRoute(
   })
 );
 
-workbox.routing.registerNavigationRoute("/index.html");
+

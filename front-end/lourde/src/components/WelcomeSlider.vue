@@ -400,11 +400,11 @@ export default {
       },
       {
         display: "Achievements",
-        href: "#/achievements",
+        href: "/achievements",
       },
       {
         display: "Events",
-        href: "#/events",
+        href: "/events",
       },
       {
         display: "Infrastructures",
@@ -416,11 +416,11 @@ export default {
       },
       {
         display: "Calendar",
-        href: "#/calendar",
+        href: "/calendar",
       },
       {
         display: "Contact Us",
-        href: "#/contact",
+        href: "/contact",
       },
     ],
     items: [

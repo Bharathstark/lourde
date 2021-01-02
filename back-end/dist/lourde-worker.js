@@ -1,4 +1,4 @@
-importScripts("/precache-manifest.649a426fd8df4dcec37585b0fa2a0979.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("/precache-manifest.4bddd0a42e4dc3aef240194768bf586a.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 workbox.setConfig({
   debug: true,
@@ -17,13 +17,13 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('activate', () => {
-  console.log("clients Claim")
   self.clients.claim();
   
 });
 
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+workbox.routing.registerNavigationRoute("/index.html");
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
  * requests for URLs in the manifest.
@@ -108,5 +108,5 @@ workbox.routing.registerRoute(
   })
 );
 
-workbox.routing.registerNavigationRoute("/index.html");
+
 
