@@ -76,7 +76,7 @@ func main() {
 	spa := handler.SPAHandler{StaticPath: "dist", IndexPath: "index.html"}
 	apiRouter.Use(loggingMiddleware)
 	router.PathPrefix("/").Handler(spa)
-	cert, error := tls.LoadX509KeyPair("certificate.crt", "private.key")
+	cert, error := tls.LoadX509KeyPair("lourde.crt", "private.key")
 	if error != nil {
 		logger.Log.Print(error)
 	}
