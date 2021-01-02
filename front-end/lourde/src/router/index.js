@@ -12,6 +12,12 @@ const routes = [
     meta: { title: "Home",content:"This is the Home Page of Our Website" }
   },
   {
+    path: "/index.html",
+    component: Home,
+    alias: '/',
+    meta: { title: "Home",content:"This is the Home Page of Our Website" }
+  },
+  {
     path: "/contact",
     name: "About",
     meta: { title: "Contact Us",content:"Contact our Office Incase Of Queries" },

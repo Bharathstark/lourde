@@ -46,12 +46,13 @@ export default {
       });
     },
     agree() {
-      this.resolve(true);
       this.dialog = false;
+      this.resolve(true);
+      
     },
     cancel() {
-      this.resolve(false);
       this.dialog = false;
+      this.resolve(false);
     }
   }
 };
